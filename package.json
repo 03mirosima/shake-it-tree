@@ -275,8 +275,11 @@
     "ws": "^8.2.3",
     "yocto-queue": "^0.1.0"
   },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack serve",
+    "watch": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
