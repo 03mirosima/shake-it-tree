@@ -4,11 +4,9 @@ import "../styles/index.scss";
 const App = () => {
   return (
     <>
-      <section className="hero">
-        <div>
-          <Tree />
-        </div>
-      </section>
+      <div className="app-wrapper">
+        <Tree />
+      </div>
     </>
   );
 };

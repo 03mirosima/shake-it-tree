@@ -1,6 +1,33 @@
-.hero {
-  background: yellow;
-  background: url("../images/tree.svg");
-  background-size: contain;
-  background-position: center;
+body {
+  display: flex;
+  justify-content: center;
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .tree-wrapper {
+      width: 400px;
+    }
+    .apple {
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+    }
+    .shake-button {
+      border-radius: 30px;
+      background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+      background-color: #44c767;
+      border: 1px solid #18ab29;
+      cursor: pointer;
+      color: #ffffff;
+      padding: 16px 31px;
+      margin-bottom: 25px;
+      font-size: 20px;
+      &:hover {
+        background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+        background-color: #5cbf2a;
+      }
+    }
+  }
 }
