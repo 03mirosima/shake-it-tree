@@ -1,6 +1,4 @@
-import "./styles/index.scss";
-const a = {
-  name: "b",
-};
+import { render } from "react-dom";
+import App from "./components/App";
 
-console.log(a.name);
+render(<App />, document.getElementById("root"));

@@ -2,6 +2,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.4.0",
     "mini-css-extract-plugin": "^2.4.2",
@@ -217,6 +218,8 @@
     "randombytes": "^2.1.0",
     "range-parser": "^1.2.1",
     "raw-body": "^2.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "readable-stream": "^3.6.0",
     "readdirp": "^3.6.0",
     "rechoir": "^0.7.1",
