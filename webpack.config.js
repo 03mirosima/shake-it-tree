@@ -9,8 +9,15 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   mode: mode,
   devtool: "source-map",
+  output: {
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
+      },
       {
         test: /\.s?css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],

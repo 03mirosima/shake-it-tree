@@ -1,4 +1,3 @@
-import React from "react";
 import Tree from "./Tree";
 import "../styles/index.scss";
 

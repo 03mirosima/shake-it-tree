@@ -1,5 +1,11 @@
-const a = {
-  name: "b",
-};
+import sword from "../images/a.jpg";
 
-alert(a.name);
+const Tree = () => {
+  return (
+    <div>
+      <p>hfhfh</p>
+      <img src={sword} />
+    </div>
+  );
+};
+export default Tree;
