@@ -40,7 +40,7 @@ const treeSlice = createSlice({
       const isDropped = action.payload.isDropped;
       state.apples[id].isDropped = action.payload.isDropped;
       if (isDropped) {
-        state.apples[id].top = "530px";
+        state.apples[id].top = "350px";
         state.apples[id].transition = action.payload.transition;
       }
     },
@@ -49,6 +49,7 @@ const treeSlice = createSlice({
       const isDropped = state.apples[id].isDropped;
 
       if (isDropped) {
+        state.apples[id].top = "330px";
         state.apples[id].left = `${action.payload.left}px`;
         state.apples[id].transition = action.payload.transition;
       }

@@ -16,8 +16,8 @@ const Tree = () => {
         {apples.map((a) => (
           <Apples key={a.id} style={a} />
         ))}
-        <Basket />
       </div>
+      <Basket />
     </>
   );
 };

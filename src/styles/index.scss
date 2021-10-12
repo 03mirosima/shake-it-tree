@@ -1,13 +1,21 @@
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("../images/background.png") no-repeat fixed center / cover;
+  background-size: cover;
+  margin: 0 auto;
+  padding: 0;
   .app-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     .tree-wrapper {
       width: 400px;
       position: relative;
+      top: 240px;
       .tree-image {
         animation: shake 5s;
         @keyframes shake {
@@ -46,13 +54,13 @@ body {
           }
         }
       }
-      .basket-wrapper {
-        position: relative;
-        left: 440px;
-        top: 0px;
-        img {
-          width: 180px;
-        }
+    }
+    .basket-wrapper {
+      position: relative;
+      left: 440px;
+      top: 42px;
+      img {
+        width: 180px;
       }
     }
     .apple {
@@ -64,8 +72,8 @@ body {
     }
     .shake-button {
       border-radius: 30px;
-      background: linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
-      background-color: #44c767;
+      background: linear-gradient(to bottom, #659c35 5%, #5cbf2a 100%);
+      background-color: #659c35;
       border: 1px solid #18ab29;
       cursor: pointer;
       color: #ffffff;
