@@ -2,6 +2,7 @@ import {
   setTreeShake,
   selectAllApples,
   setAppleDown,
+  setAppleBasket,
 } from "../store/treeSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -20,9 +21,12 @@ export default function ShakeButton() {
   }
   function handleDown() {
     for (let item = 0; item <= apples.length; item++) {
-      dispatch(
-        setAppleDown({ id: item, transition: `${Math.random() * 10}s` })
-      );
+      const second = Math.floor(Math.random() * 10);
+      console.log(item);
+      dispatch(setAppleDown({ id: item, transition: `${second}s` }));
+      setTimeout(function () {
+        dispatch(setAppleBasket({ id: item, transition: "3s" }));
+      }, second * 1000);
     }
   }
   return (

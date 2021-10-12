@@ -39,10 +39,17 @@ const treeSlice = createSlice({
         item_.transition = action.payload.transition;
       }
     },
+    setAppleBasket: (state, action) => {
+      const item_ = state.apples.find((item) => item.id === action.payload.id);
+      if (item_) {
+        item_.left = "1300px";
+        item_.transition = action.payload.transition;
+      }
+    },
   },
   extraReducers: {},
 });
 export const selectAllApples = (state) => state.tree.apples;
-export const { setTreeShake, setAppleDown } = treeSlice.actions;
+export const { setTreeShake, setAppleDown, setAppleBasket } = treeSlice.actions;
 
 export default treeSlice.reducer;

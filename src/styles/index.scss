@@ -47,7 +47,8 @@ body {
       }
       .basket-wrapper {
         position: absolute;
-        right: 300px;
+        right: 410px;
+        top: 410px;
       }
     }
     .apple {
@@ -55,6 +56,7 @@ body {
       width: 50px;
       height: 50px;
       position: absolute;
+      z-index: 1;
     }
     .shake-button {
       border-radius: 30px;
