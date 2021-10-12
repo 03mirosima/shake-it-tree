@@ -19,9 +19,12 @@ export default function ShakeButton() {
     }, 3000);
   }
   function handleDown() {
-    for (let item = 0; item < apples.length; item++) {
+    for (let item = 0; item <= apples.length; item++) {
       setTimeout(
-        () => dispatch(setAppleDown(`${Math.random() * 10}s`)),
+        () =>
+          dispatch(
+            setAppleDown({ id: item, transition: `${Math.random() * 10}s` })
+          ),
         Math.floor(Math.random() * 1000)
       );
     }
