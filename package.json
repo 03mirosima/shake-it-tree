@@ -5,6 +5,7 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.4.0",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.4.2",
     "sass": "^1.42.1",
@@ -13,6 +14,7 @@
     "webpack-cli": "^4.9.0",
     "webpack-dev-server": "^4.3.1"
   },
+  "homepage": "https://03mirosima.github.io/shake-it-tree/",
   "name": "shake-it-tree",
   "version": "1.0.0",
   "main": "index.js",
@@ -294,7 +296,8 @@
     "start": "webpack serve",
     "watch": "webpack --watch",
     "build": "webpack",
-    "clean": "del -f dist"
+    "clean": "del -f dist",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
