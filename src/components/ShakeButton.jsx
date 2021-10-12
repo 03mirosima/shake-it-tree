@@ -13,12 +13,15 @@ export default function ShakeButton() {
 
   function handleShake() {
     dispatch(setTreeShake());
-    setTimeout(() => dispatch(setTreeShake()).then(handleDown()), 3000);
+    setTimeout(function () {
+      dispatch(setTreeShake());
+      handleDown();
+    }, 3000);
   }
   function handleDown() {
     for (let item = 0; item < apples.length; item++) {
       setTimeout(
-        () => dispatch(setAppleDown("0px")),
+        () => dispatch(setAppleDown(`${Math.random() * 10}s`)),
         Math.floor(Math.random() * 1000)
       );
     }

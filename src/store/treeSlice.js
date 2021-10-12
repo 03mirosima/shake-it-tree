@@ -33,11 +33,10 @@ const treeSlice = createSlice({
       state.treeShake = !state.treeShake;
     },
     setAppleDown: (state, action) => {
-      /*  state.apples.top = "0px"; */
       return {
         ...state,
         apples: state.apples.map((content, i) => {
-          return { ...content, top: action.payload };
+          return { ...content, top: "600px", transition: action.payload };
         }),
       };
     },
