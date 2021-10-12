@@ -20,10 +20,17 @@ export default function ShakeButton() {
     }, 3000);
   }
   function handleDown() {
-    for (let item = 0; item <= apples.length; item++) {
+    for (let item = 0; item < apples.length; item++) {
       const second = Math.floor(Math.random() * 10);
-      console.log(item);
-      dispatch(setAppleDown({ id: item, transition: `${second}s` }));
+      const randomBoolean = Math.random() >= 0.5;
+
+      dispatch(
+        setAppleDown({
+          id: item,
+          transition: `${second}s`,
+          isDropped: randomBoolean,
+        })
+      );
       setTimeout(function () {
         dispatch(setAppleBasket({ id: item, transition: "3s" }));
       }, second * 1000);
