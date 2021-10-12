@@ -7,27 +7,27 @@ const treeSlice = createSlice({
       {
         id: 1,
         top: "102px",
-        left: "814px",
+        left: "63px",
         isDropped: false,
       },
       {
         id: 2,
-        top: "124px",
-        left: "940px",
+        top: "135px",
+        left: "164px",
         isDropped: false,
       },
       {
         id: 3,
-        top: "168px",
-        left: "961px",
+        top: "207px",
+        left: "198px",
         isDropped: false,
       },
-      { id: 4, top: "61px", left: "934px", isDropped: false },
-      { id: 5, top: "229px", left: "899px", isDropped: false },
-      { id: 6, top: "229px", left: "858px", isDropped: false },
-      { id: 7, top: "162px", left: "861px", isDropped: false },
-      { id: 8, top: "108px", left: "879px", isDropped: false },
-      { id: 9, top: "191px", left: "805px", isDropped: false },
+      { id: 4, top: "48px", left: "177px", isDropped: false },
+      { id: 5, top: "229px", left: "100px", isDropped: false },
+      { id: 6, top: "207px", left: "142px", isDropped: false },
+      { id: 7, top: "100px", left: "125px", isDropped: false },
+      { id: 8, top: "102px", left: "225px", isDropped: false },
+      { id: 9, top: "156px", left: "116px", isDropped: false },
     ],
     treeShake: false,
   },
@@ -40,7 +40,7 @@ const treeSlice = createSlice({
       const isDropped = action.payload.isDropped;
       state.apples[id].isDropped = action.payload.isDropped;
       if (isDropped) {
-        state.apples[id].top = "600px";
+        state.apples[id].top = "530px";
         state.apples[id].transition = action.payload.transition;
       }
     },
@@ -49,7 +49,7 @@ const treeSlice = createSlice({
       const isDropped = state.apples[id].isDropped;
 
       if (isDropped) {
-        state.apples[id].left = "1300px";
+        state.apples[id].left = "500px";
         state.apples[id].transition = action.payload.transition;
       }
     },

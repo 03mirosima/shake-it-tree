@@ -7,6 +7,7 @@ body {
     justify-content: center;
     .tree-wrapper {
       width: 400px;
+      position: relative;
       .tree-image {
         animation: shake 5s;
         @keyframes shake {
@@ -46,9 +47,12 @@ body {
         }
       }
       .basket-wrapper {
-        position: absolute;
-        right: 410px;
-        top: 410px;
+        position: relative;
+        left: 440px;
+        top: 0px;
+        img {
+          width: 180px;
+        }
       }
     }
     .apple {

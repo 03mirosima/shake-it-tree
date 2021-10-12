@@ -19,9 +19,12 @@ export default function ShakeButton() {
       handleDown();
     }, 3000);
   }
+
   function handleDown() {
     for (let item = 0; item < apples.length; item++) {
-      const second = Math.floor(Math.random() * 10);
+      // Generates number between 1 and 10
+      const second = Math.floor(Math.random() * 10 + 1);
+      // Generates a boolean value for deciding which apple to fall down
       const randomBoolean = Math.random() >= 0.5;
 
       dispatch(
