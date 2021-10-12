@@ -6,12 +6,12 @@ import ShakeButton from "./ShakeButton";
 
 const Tree = () => {
   const apples = useSelector(selectAllApples);
-  console.log(apples);
+  const isShaking = useSelector(({ tree }) => tree.treeShake);
   return (
     <>
       <ShakeButton />
       <div className="tree-wrapper">
-        <img src={tree} />
+        <img className={` ${isShaking && "tree-image"}`} src={tree} />
         {apples.map((a) => (
           <Apples key={a.id} style={a} />
         ))}

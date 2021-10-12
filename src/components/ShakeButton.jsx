@@ -8,6 +8,7 @@ export default function ShakeButton() {
 
   function handleShake() {
     dispatch(setTreeShake());
+    setTimeout(() => dispatch(setTreeShake()), 3000);
   }
   return (
     <button className="shake-button" onClick={handleShake} disabled={isShaking}>
