@@ -22,10 +22,14 @@ export default function ShakeButton() {
 
   function handleDown() {
     for (let item = 0; item < apples.length; item++) {
-      // Generates number between 1 and 10
-      const second = Math.floor(Math.random() * 10 + 1);
+      const randomNumberGenerator = (min, max) =>
+        Math.floor(Math.random() * (max - min)) + min;
+      // Generates number between 1 and 7
+      const second = randomNumberGenerator(1, 8);
       // Generates a boolean value for deciding which apple to fall down
-      const randomBoolean = Math.random() >= 0.5;
+      const randomBoolean = randomNumberGenerator(0, 2) >= 0.5;
+      // Generates random left value
+      const leftValue = randomNumberGenerator(440, 540);
 
       dispatch(
         setAppleDown({
@@ -35,7 +39,9 @@ export default function ShakeButton() {
         })
       );
       setTimeout(function () {
-        dispatch(setAppleBasket({ id: item, transition: "3s" }));
+        dispatch(
+          setAppleBasket({ id: item, transition: "3s", left: leftValue })
+        );
       }, second * 1000);
     }
   }

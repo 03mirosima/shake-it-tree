@@ -49,7 +49,7 @@ const treeSlice = createSlice({
       const isDropped = state.apples[id].isDropped;
 
       if (isDropped) {
-        state.apples[id].left = "500px";
+        state.apples[id].left = `${action.payload.left}px`;
         state.apples[id].transition = action.payload.transition;
       }
     },
