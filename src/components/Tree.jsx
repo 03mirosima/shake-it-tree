@@ -12,9 +12,13 @@ const Tree = () => {
     <>
       <ShakeButton />
       <div className="tree-wrapper">
-        <img className={` ${isShaking && "tree-image"}`} src={tree} />
+        <img className={` ${isShaking && "tree-shaking"}`} src={tree} />
         {apples.map((a) => (
-          <Apples key={a.id} style={a} />
+          <Apples
+            key={a.id}
+            style={a}
+            className={` ${isShaking && "apple-shaking"}`}
+          />
         ))}
       </div>
       <Basket />

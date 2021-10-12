@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function ShakeButton() {
   const isShaking = useSelector(({ tree }) => tree.treeShake);
-  let apples = useSelector(selectAllApples);
+  const apples = useSelector(selectAllApples);
 
   const dispatch = useDispatch();
 
@@ -38,11 +38,12 @@ export default function ShakeButton() {
           isDropped: randomBoolean,
         })
       );
+      console.log(apples, "app");
       setTimeout(function () {
         dispatch(
           setAppleBasket({ id: item, transition: "3s", left: leftValue })
         );
-      }, second * 1000);
+      }, second * 1000 + 1000);
     }
   }
   return (
