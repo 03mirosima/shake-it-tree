@@ -1419,7 +1419,7 @@ __webpack_require__.r(__webpack_exports__);
 function Apples(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-      className: "apple",
+      className: "apple ".concat(props.className),
       style: props.style,
       src: _images_apple1_svg__WEBPACK_IMPORTED_MODULE_1__
     })
@@ -1504,13 +1504,14 @@ function ShakeButton() {
         transition: "".concat(second, "s"),
         isDropped: randomBoolean
       }));
+      console.log(apples, "app");
       setTimeout(function () {
         dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleBasket)({
           id: item,
           transition: "3s",
           left: leftValue
         }));
-      }, second * 1000);
+      }, second * 1000 + 1000);
     };
 
     for (var item = 0; item < apples.length; item++) {
@@ -1566,11 +1567,12 @@ var Tree = function Tree() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ShakeButton__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "tree-wrapper",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-        className: " ".concat(isShaking && "tree-image"),
+        className: " ".concat(isShaking && "tree-shaking"),
         src: _images_tree2_svg__WEBPACK_IMPORTED_MODULE_0__
       }), apples.map(function (a) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Apples__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          style: a
+          style: a,
+          className: " ".concat(isShaking && "apple-shaking")
         }, a.id);
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Basket__WEBPACK_IMPORTED_MODULE_5__["default"], {})]

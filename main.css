@@ -1,27 +1,60 @@
 /*!****************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss ***!
   \****************************************************************************************************************/
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: url(images/7f92b2b0ff47d5b568f8.png) no-repeat fixed center/cover;
-  background-size: cover;
-  margin: 0 auto;
-  padding: 0;
+.apple {
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 1;
 }
-body .app-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+.apple-shaking {
+  animation: shake 3s;
 }
-body .app-wrapper .tree-wrapper {
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
+
+.basket-wrapper {
+  position: relative;
+  left: 440px;
+  top: 42px;
+}
+.basket-wrapper img {
+  width: 180px;
+}
+
+.shake-button {
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #659c35 5%, #5cbf2a 100%);
+  background-color: #659c35;
+  border: 1px solid #18ab29;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+.shake-button:hover {
+  background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+  background-color: #5cbf2a;
+}
+
+.tree-wrapper {
   width: 400px;
   position: relative;
   top: 240px;
 }
-body .app-wrapper .tree-wrapper .tree-image {
+.tree-wrapper .tree-shaking {
   animation: shake 5s;
 }
 @keyframes shake {
@@ -59,35 +92,21 @@ body .app-wrapper .tree-wrapper .tree-image {
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
-body .app-wrapper .basket-wrapper {
-  position: relative;
-  left: 440px;
-  top: 42px;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url(images/7f92b2b0ff47d5b568f8.png) no-repeat fixed center/cover;
+  background-size: cover;
+  margin: 0 auto;
+  padding: 0;
 }
-body .app-wrapper .basket-wrapper img {
-  width: 180px;
-}
-body .app-wrapper .apple {
-  overflow: hidden;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  z-index: 1;
-}
-body .app-wrapper .shake-button {
-  border-radius: 30px;
-  background: linear-gradient(to bottom, #659c35 5%, #5cbf2a 100%);
-  background-color: #659c35;
-  border: 1px solid #18ab29;
-  cursor: pointer;
-  color: #ffffff;
-  padding: 16px 31px;
-  margin-bottom: 25px;
-  font-size: 20px;
-}
-body .app-wrapper .shake-button:hover {
-  background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
-  background-color: #5cbf2a;
+body .app-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=main.css.map*/
