@@ -1,0 +1,15 @@
+.shake-button {
+  border-radius: 30px;
+  background: linear-gradient(to bottom, #659c35 5%, #5cbf2a 100%);
+  background-color: #659c35;
+  border: 1px solid #18ab29;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  &:hover {
+    background: linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+    background-color: #5cbf2a;
+  }
+}
