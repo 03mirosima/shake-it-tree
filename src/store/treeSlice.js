@@ -32,10 +32,19 @@ const treeSlice = createSlice({
     setTreeShake: (state) => {
       state.treeShake = !state.treeShake;
     },
+    setAppleDown: (state, action) => {
+      /*  state.apples.top = "0px"; */
+      return {
+        ...state,
+        apples: state.apples.map((content, i) => {
+          return { ...content, top: action.payload };
+        }),
+      };
+    },
   },
   extraReducers: {},
 });
 export const selectAllApples = (state) => state.tree.apples;
-export const { setTreeShake } = treeSlice.actions;
+export const { setTreeShake, setAppleDown } = treeSlice.actions;
 
 export default treeSlice.reducer;

@@ -1,14 +1,27 @@
-import { setTreeShake } from "../store/treeSlice";
+import {
+  setTreeShake,
+  selectAllApples,
+  setAppleDown,
+} from "../store/treeSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ShakeButton() {
   const isShaking = useSelector(({ tree }) => tree.treeShake);
-  console.log(isShaking, "ss");
+  let apples = useSelector(selectAllApples);
+
   const dispatch = useDispatch();
 
   function handleShake() {
     dispatch(setTreeShake());
-    setTimeout(() => dispatch(setTreeShake()), 3000);
+    setTimeout(() => dispatch(setTreeShake()).then(handleDown()), 3000);
+  }
+  function handleDown() {
+    for (let item = 0; item < apples.length; item++) {
+      setTimeout(
+        () => dispatch(setAppleDown("0px")),
+        Math.floor(Math.random() * 1000)
+      );
+    }
   }
   return (
     <button className="shake-button" onClick={handleShake} disabled={isShaking}>
