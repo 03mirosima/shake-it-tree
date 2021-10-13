@@ -1478,6 +1478,13 @@ function ShakeButton() {
   });
   var apples = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.selectAllApples);
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  /* We generated more than one random number in project so we made a function for easy usage */
+
+  var randomNumberGenerator = function randomNumberGenerator(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+  /* We shake the tree for 3 seconds then call handleDown  */
+
 
   function handleShake() {
     dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setTreeShake)());
@@ -1486,32 +1493,36 @@ function ShakeButton() {
       handleDown();
     }, 3000);
   }
+  /* We handled apples falling down with setAppleDown at random times then 
+  with setAppleBasket one second after apple down we put the apple in basket */
+
 
   function handleDown() {
     var _loop = function _loop(item) {
-      var randomNumberGenerator = function randomNumberGenerator(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-      }; // Generates number between 1 and 7
-
-
+      // Generates number between 1 and 7
       var second = randomNumberGenerator(1, 8); // Generates a boolean value for deciding which apple to fall down
 
       var randomBoolean = randomNumberGenerator(0, 2) >= 0.5; // Generates random left value
 
       var leftValue = randomNumberGenerator(440, 540);
-      dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleDown)({
-        id: item,
-        transition: "".concat(second, "s"),
-        isDropped: randomBoolean
-      }));
-      console.log(apples, "app");
-      setTimeout(function () {
-        dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleBasket)({
+
+      if (apples[item].isDropped === false) {
+        dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleDown)({
           id: item,
-          transition: "3s",
-          left: leftValue
+          transition: "".concat(second, "s"),
+          isDropped: randomBoolean
         }));
-      }, second * 1000 + 1000);
+      }
+
+      if (randomBoolean) {
+        setTimeout(function () {
+          dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleBasket)({
+            id: item,
+            transition: "3s",
+            left: leftValue
+          }));
+        }, second * 1000 + 1000);
+      }
     };
 
     for (var item = 0; item < apples.length; item++) {
@@ -1563,16 +1574,21 @@ var Tree = function Tree() {
     var tree = _ref.tree;
     return tree.treeShake;
   });
+  var dropControl = apples.filter(function (apple) {
+    return apple.isDropped === true;
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ShakeButton__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "tree-wrapper",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
         className: " ".concat(isShaking && "tree-shaking"),
         src: _images_tree2_svg__WEBPACK_IMPORTED_MODULE_0__
-      }), apples.map(function (a) {
+      }), dropControl.length === 9 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h5", {
+        children: "\xDCzg\xFCn\xFCm daha elma kalmad\u0131 :("
+      }) : apples.map(function (a) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Apples__WEBPACK_IMPORTED_MODULE_1__["default"], {
           style: a,
-          className: " ".concat(isShaking && "apple-shaking")
+          className: " ".concat(isShaking && a.isDropped === false ? "apple-shaking" : "")
         }, a.id);
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Basket__WEBPACK_IMPORTED_MODULE_5__["default"], {})]
@@ -1675,9 +1691,12 @@ var treeSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
     treeShake: false
   },
   reducers: {
+    /* For toggling tree's shaking state */
     setTreeShake: function setTreeShake(state) {
       state.treeShake = !state.treeShake;
     },
+
+    /* We check for apple's dropping state then we dropped the apple using top and transition */
     setAppleDown: function setAppleDown(state, action) {
       var id = action.payload.id;
       var isDropped = action.payload.isDropped;
@@ -1688,6 +1707,8 @@ var treeSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
         state.apples[id].transition = action.payload.transition;
       }
     },
+
+    /* We check for apple's dropping state then we slide the apple to the basket */
     setAppleBasket: function setAppleBasket(state, action) {
       var id = action.payload.id;
       var isDropped = state.apples[id].isDropped;
