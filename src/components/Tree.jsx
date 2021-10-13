@@ -13,6 +13,7 @@ const Tree = () => {
       <ShakeButton />
       <div className="tree-wrapper">
         <img className={` ${isShaking && "tree-shaking"}`} src={tree} />
+        {/* We map the apples for showing them on the tree */}
         {apples.map((a) => (
           <Apples
             key={a.id}

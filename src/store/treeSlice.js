@@ -32,9 +32,11 @@ const treeSlice = createSlice({
     treeShake: false,
   },
   reducers: {
+    /* For toggling tree's shaking state */
     setTreeShake: (state) => {
       state.treeShake = !state.treeShake;
     },
+    /* We check for apple's dropping state then we dropped the apple using top and transition */
     setAppleDown: (state, action) => {
       const id = action.payload.id;
       const isDropped = action.payload.isDropped;
@@ -44,6 +46,7 @@ const treeSlice = createSlice({
         state.apples[id].transition = action.payload.transition;
       }
     },
+    /* We check for apple's dropping state then we slide the apple to the basket */
     setAppleBasket: (state, action) => {
       const id = action.payload.id;
       const isDropped = state.apples[id].isDropped;
