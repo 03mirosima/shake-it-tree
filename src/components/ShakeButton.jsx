@@ -34,19 +34,23 @@ export default function ShakeButton() {
       const randomBoolean = randomNumberGenerator(0, 2) >= 0.5;
       // Generates random left value
       const leftValue = randomNumberGenerator(440, 540);
-      dispatch(
-        setAppleDown({
-          id: item,
-          transition: `${second}s`,
-          isDropped: randomBoolean,
-        })
-      );
-      console.log(apples, "app");
-      setTimeout(function () {
+      if (apples[item].isDropped === false) {
         dispatch(
-          setAppleBasket({ id: item, transition: "3s", left: leftValue })
+          setAppleDown({
+            id: item,
+            transition: `${second}s`,
+            isDropped: randomBoolean,
+          })
         );
-      }, second * 1000 + 1000);
+      }
+
+      if (randomBoolean) {
+        setTimeout(function () {
+          dispatch(
+            setAppleBasket({ id: item, transition: "3s", left: leftValue })
+          );
+        }, second * 1000 + 1000);
+      }
     }
   }
   return (

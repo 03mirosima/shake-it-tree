@@ -18,7 +18,9 @@ const Tree = () => {
           <Apples
             key={a.id}
             style={a}
-            className={` ${isShaking && "apple-shaking"}`}
+            className={` ${
+              isShaking && a.isDropped === false ? "apple-shaking" : ""
+            }`}
           />
         ))}
       </div>
