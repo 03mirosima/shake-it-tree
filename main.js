@@ -1471,7 +1471,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ShakeButton() {
+function ShakeButton(props) {
   var isShaking = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (_ref) {
     var tree = _ref.tree;
     return tree.treeShake;
@@ -1514,15 +1514,13 @@ function ShakeButton() {
         }));
       }
 
-      if (randomBoolean) {
-        setTimeout(function () {
-          dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleBasket)({
-            id: item,
-            transition: "3s",
-            left: leftValue
-          }));
-        }, second * 1000 + 1000);
-      }
+      setTimeout(function () {
+        dispatch((0,_store_treeSlice__WEBPACK_IMPORTED_MODULE_0__.setAppleBasket)({
+          id: item,
+          transition: "3s",
+          left: leftValue
+        }));
+      }, second * 1000 + 1000);
     };
 
     for (var item = 0; item < apples.length; item++) {
@@ -1533,7 +1531,7 @@ function ShakeButton() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
     className: "shake-button",
     onClick: handleShake,
-    disabled: isShaking,
+    disabled: props.disabled || isShaking,
     children: isShaking ? "I'm already shaking!" : "Shake My Apples!"
   });
 }
@@ -1575,17 +1573,24 @@ var Tree = function Tree() {
     return tree.treeShake;
   });
   var dropControl = apples.filter(function (apple) {
-    return apple.isDropped === true;
+    return apple.onBasket;
+  });
+  var filteredApples = apples.filter(function (col) {
+    if (col.isDropped === false) {
+      return col;
+    }
+
+    return col;
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ShakeButton__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ShakeButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      disabled: dropControl.length === 9
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "tree-wrapper",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
         className: " ".concat(isShaking && "tree-shaking"),
         src: _images_tree2_svg__WEBPACK_IMPORTED_MODULE_0__
-      }), dropControl.length === 9 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h5", {
-        children: "\xDCzg\xFCn\xFCm daha elma kalmad\u0131 :("
-      }) : apples.map(function (a) {
+      }), filteredApples.map(function (a) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Apples__WEBPACK_IMPORTED_MODULE_1__["default"], {
           style: a,
           className: " ".concat(isShaking && a.isDropped === false ? "apple-shaking" : "")
@@ -1643,47 +1648,50 @@ var treeSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
   name: "tree",
   initialState: {
     apples: [{
-      id: 1,
+      id: 0,
       top: "102px",
       left: "63px",
-      isDropped: false
+      isDropped: false,
+      onBasket: false
     }, {
-      id: 2,
+      id: 1,
       top: "135px",
       left: "164px",
-      isDropped: false
+      isDropped: false,
+      onBasket: false
     }, {
-      id: 3,
+      id: 2,
       top: "207px",
       left: "198px",
-      isDropped: false
+      isDropped: false,
+      onBasket: false
     }, {
-      id: 4,
+      id: 3,
       top: "48px",
       left: "177px",
       isDropped: false
     }, {
-      id: 5,
+      id: 4,
       top: "229px",
       left: "100px",
       isDropped: false
     }, {
-      id: 6,
+      id: 5,
       top: "207px",
       left: "142px",
       isDropped: false
     }, {
-      id: 7,
+      id: 6,
       top: "100px",
       left: "125px",
       isDropped: false
     }, {
-      id: 8,
+      id: 7,
       top: "102px",
       left: "225px",
       isDropped: false
     }, {
-      id: 9,
+      id: 8,
       top: "156px",
       left: "116px",
       isDropped: false
@@ -1712,11 +1720,13 @@ var treeSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createSlice)({
     setAppleBasket: function setAppleBasket(state, action) {
       var id = action.payload.id;
       var isDropped = state.apples[id].isDropped;
+      var onBasket = state.apples[id].onBasket;
 
-      if (isDropped) {
+      if (isDropped && !onBasket) {
         state.apples[id].top = "330px";
         state.apples[id].left = "".concat(action.payload.left, "px");
         state.apples[id].transition = action.payload.transition;
+        state.apples[id].onBasket = true;
       }
     }
   },
