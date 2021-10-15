@@ -9,6 +9,11 @@ There is a tree with big, juicy and red apples on it. We want to collect those a
 ```
 ** This project is made for helping everyone to collect those big,juicy, red apples! 
 ```
+# Running The Project
+
+First you should run npm i 
+
+Then you can run npm start
 
 ## Built With
 
