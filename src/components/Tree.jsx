@@ -20,23 +20,19 @@ const Tree = () => {
 
   return (
     <>
-      <ShakeButton />
+      <ShakeButton disabled={dropControl.length === 9} />
       <div className="tree-wrapper">
         <img className={` ${isShaking && "tree-shaking"}`} src={tree} />
         {/* We map the apples for showing them on the tree then control if tree has any apples*/}
-        {dropControl.length === 9 ? (
-          <h5>Üzgünüm daha elma kalmadı :(</h5>
-        ) : (
-          filteredApples.map((a) => (
-            <Apples
-              key={a.id}
-              style={a}
-              className={` ${
-                isShaking && a.isDropped === false ? "apple-shaking" : ""
-              }`}
-            />
-          ))
-        )}
+        {filteredApples.map((a) => (
+          <Apples
+            key={a.id}
+            style={a}
+            className={` ${
+              isShaking && a.isDropped === false ? "apple-shaking" : ""
+            }`}
+          />
+        ))}
       </div>
       <Basket />
     </>

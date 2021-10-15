@@ -6,7 +6,7 @@ import {
 } from "../store/treeSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ShakeButton() {
+export default function ShakeButton(props) {
   const isShaking = useSelector(({ tree }) => tree.treeShake);
   const apples = useSelector(selectAllApples);
   const dispatch = useDispatch();
@@ -52,7 +52,11 @@ export default function ShakeButton() {
     }
   }
   return (
-    <button className="shake-button" onClick={handleShake} disabled={isShaking}>
+    <button
+      className="shake-button"
+      onClick={handleShake}
+      disabled={props.disabled || isShaking}
+    >
       {isShaking ? "I'm already shaking!" : "Shake My Apples!"}
     </button>
   );
