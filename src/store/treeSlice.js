@@ -9,18 +9,21 @@ const treeSlice = createSlice({
         top: "102px",
         left: "63px",
         isDropped: false,
+        onBasket: false,
       },
       {
         id: 2,
         top: "135px",
         left: "164px",
         isDropped: false,
+        onBasket: false,
       },
       {
         id: 3,
         top: "207px",
         left: "198px",
         isDropped: false,
+        onBasket: false,
       },
       { id: 4, top: "48px", left: "177px", isDropped: false },
       { id: 5, top: "229px", left: "100px", isDropped: false },
@@ -50,11 +53,13 @@ const treeSlice = createSlice({
     setAppleBasket: (state, action) => {
       const id = action.payload.id;
       const isDropped = state.apples[id].isDropped;
+      const onBasket = state.apples[id].onBasket;
 
-      if (isDropped) {
+      if (isDropped && !onBasket) {
         state.apples[id].top = "330px";
         state.apples[id].left = `${action.payload.left}px`;
         state.apples[id].transition = action.payload.transition;
+        state.apples[id].onBasket = true;
       }
     },
   },
