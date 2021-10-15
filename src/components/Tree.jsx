@@ -9,8 +9,15 @@ const Tree = () => {
   const apples = useSelector(selectAllApples);
   const isShaking = useSelector(({ tree }) => tree.treeShake);
   const dropControl = apples.filter((apple) => {
-    return apple.isDropped === true;
+    return apple.onBasket;
   });
+  const filteredApples = apples.filter((col) => {
+    if (col.isDropped === false) {
+      return col;
+    }
+    return col;
+  });
+
   return (
     <>
       <ShakeButton />
@@ -20,7 +27,7 @@ const Tree = () => {
         {dropControl.length === 9 ? (
           <h5>Üzgünüm daha elma kalmadı :(</h5>
         ) : (
-          apples.map((a) => (
+          filteredApples.map((a) => (
             <Apples
               key={a.id}
               style={a}

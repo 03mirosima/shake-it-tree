@@ -44,13 +44,11 @@ export default function ShakeButton() {
         );
       }
 
-      if (randomBoolean) {
-        setTimeout(function () {
-          dispatch(
-            setAppleBasket({ id: item, transition: "3s", left: leftValue })
-          );
-        }, second * 1000 + 1000);
-      }
+      setTimeout(function () {
+        dispatch(
+          setAppleBasket({ id: item, transition: "3s", left: leftValue })
+        );
+      }, second * 1000 + 1000);
     }
   }
   return (
